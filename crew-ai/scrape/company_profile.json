@@ -1,0 +1,57 @@
+{
+  "permalink": "optum",
+  "name": "Optum",
+  "linkedin_name": "Optum",
+  "address": "11000 Optum Circle, Eden Prairie, Minnesota, 55344, US",
+  "street": "11000 Optum Circle",
+  "country": "United States",
+  "region": "Minnesota",
+  "locality": "Eden Prairie",
+  "postal_code": "55344",
+  "type": "Public Company",
+  "industry": "Hospitals and Health Care",
+  "slogan": "Simpler health plans, better experience, healthier lives.",
+  "description": "Optum is a health services and innovation company on a mission to help people live healthier lives and to help make the health system work better for everyone.",
+  "linkedin": "https://www.linkedin.com/company/optum/",
+  "linkedin_followers": 1096441,
+  "employee_size": "10,001+",
+  "founded": 1985,
+  "logo": "https://www.optum.com/logo.png",
+  "website": "https://www.optum.com/en/",
+  "services": [
+    "Data and analytics",
+    "Health care delivery",
+    "Health care operations",
+    "Pharmacy care services",
+    "Population health management",
+    "Advisory services"
+  ],
+  "client": [],
+  "tags": [
+    "Manage Service Provider"
+  ],
+  "email": "contact@optum.com",
+  "company_sales": "$34.7B",
+  "revenue": "$34.7 billion",
+  "contact_number": "(888) 445-8745",
+  "employees": [
+    {
+      "name": "Steve Macias",
+      "bio": "President and CEO at Optum. Experienced in leading health services and innovation.",
+      "title": "President and CEO",
+      "email": "steve.macias@optum.com",
+      "url": "https://www.linkedin.com/in/steve-macias-123456/",
+      "image": "https://www.optum.com/steve-macias.jpg",
+      "is_executive": true
+    },
+    {
+      "name": "Patrick Conway",
+      "bio": "CEO of Optum Rx, leading prescription benefit management.",
+      "title": "CEO of Optum Rx",
+      "email": "patrick.conway@optum.com",
+      "url": "https://www.linkedin.com/in/patrick-conway-654321/",
+      "image": "https://www.optum.com/patrick-conway.jpg",
+      "is_executive": true
+    }
+  ]
+}

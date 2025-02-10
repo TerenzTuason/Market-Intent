@@ -1,0 +1,84 @@
+research_task:
+  description: >
+    Using {company_url}, {linkedin_url}, {rocketreach_url}, research {topic} and collect EXACTLY these fields:
+    1. Basic Company Info:
+       - Name and permalink
+       - Full address (including street, country, region, locality, postal code)
+       - Type and industry
+       - Description and slogan
+    
+    2. LinkedIn Data:
+       - LinkedIn profile URL
+       - LinkedIn company name
+       - LinkedIn follower count
+       - Employee size
+    
+    3. Company Details:
+       - Founded year
+       - Logo URL
+       - Website URL
+       - List of services
+       - List of clients
+       - List of tags (including "Manage Service Provider")
+    
+    4. Contact Info:
+       - Email
+       - Company sales (in currency format)
+       - Revenue
+       - Contact phone number
+    
+    5. Key Executives (for each):
+       - Full name
+       - Professional bio
+       - Title
+       - Email
+       - LinkedIn URL
+       - Profile image URL
+       - Executive status (true/false)
+  expected_output: >
+    A structured dictionary with all fields exactly matching the required format.
+  agent: researcher
+
+reporting_task:
+  description: >
+    Transform the research data into a JSON file with these exact fields:
+    Required fields for company profile:
+    - permalink (lowercase company name)
+    - name (company name)
+    - linkedin_name (company name on LinkedIn)
+    - address (full address string)
+    - street (street address)
+    - country (country name)
+    - region (state/region)
+    - locality (city)
+    - postal_code
+    - type (company type)
+    - industry
+    - slogan
+    - description (full company description)
+    - linkedin (LinkedIn URL)
+    - linkedin_followers (follower count)
+    - employee_size (size range)
+    - founded (year)
+    - logo (logo URL)
+    - website (website URL)
+    - services (array of services)
+    - client (empty array)
+    - tags (array with "Manage Service Provider")
+    - email
+    - company_sales (format: $XXB)
+    - revenue (revenue range)
+    - contact_number
+    - employees (array of executive objects)
+
+    Each executive object must have:
+    - name (full name)
+    - bio (professional bio)
+    - title (job title)
+    - email
+    - url (LinkedIn profile URL)
+    - image (profile image URL)
+    - is_executive (boolean: true)
+  expected_output: >
+    A properly formatted JSON file with all required fields.
+  agent: reporting_analyst

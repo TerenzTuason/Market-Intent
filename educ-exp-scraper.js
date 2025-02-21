@@ -21,37 +21,6 @@ function scrapeEducationAndExperience() {
         }
     });
 
-    if (experienceSection) {
-        // Find the list of experiences within the identified section
-        const experienceList = experienceSection.querySelector('.LnqDahNnQYwtXUKtfUWfPKpxxcrHHeZYgI');
-        if (experienceList) {
-            const experienceItems = experienceList.querySelectorAll('.FYMtNNzLPPSoOHrxKuxeKtmOHmAzhsPKSU[data-view-name="profile-component-entity"]');
-            const uniqueCompanies = new Set();
-
-            experienceItems.forEach(item => {
-                // Specifically target the company name element for multiple roles
-                const multiRoleCompanyElement = item.querySelector('div.display-flex.align-items-center.mr1.hoverable-link-text.t-bold > span[aria-hidden="true"]');
-                if (multiRoleCompanyElement) {
-                    const companyName = multiRoleCompanyElement.textContent.trim();
-                    if (companyName) {
-                        uniqueCompanies.add(companyName);
-                    }
-                } else {
-                    // Fallback to traditional method for single roles
-                    const companyElement = item.querySelector('span.t-14.t-normal > span[aria-hidden="true"]');
-                    if (companyElement) {
-                        const companyName = companyElement.textContent.trim().split('·')[0].trim();
-                        if (companyName) {
-                            uniqueCompanies.add(companyName);
-                        }
-                    }
-                }
-            });
-
-            metadata.experience.push(...uniqueCompanies);
-        }
-    }
-
     if (educationSection) {
         // Find the list of education entries within the identified section
         const educationList = educationSection.querySelector('.LnqDahNnQYwtXUKtfUWfPKpxxcrHHeZYgI');
@@ -69,6 +38,39 @@ function scrapeEducationAndExperience() {
             });
         }
     }
+
+    const experienceList = document.querySelector('.BLQQPYeZfPEOBptApvnHfGNvZksbQdSVTI');
+
+    if (experienceList) {
+            
+        // Try finding li elements directly
+        const liElements = experienceList.querySelectorAll('.PmHlzGkueYTEwuKHWkhZavwsBhlOXakIgZI');
+
+        const uniqueCompanies = new Set();
+
+        // Process all li elements
+        liElements.forEach(li => {
+            // Case 1: Single role format (company name is in a span after the role)
+            const companySpan = li.querySelector('span.t-14.t-normal');
+            if (companySpan) {
+                const text = companySpan.innerText.trim().split('·')[0].trim();
+                if (text && !text.includes('yrs') && !text.includes('mos')) {
+                    uniqueCompanies.add(text.split('\n')[0].trim());
+                }
+            }
+
+            // Case 2: Multi-role format (following the exact path)
+            const multiRoleCompany = li.querySelector('a[data-field="experience_company_logo"] div.display-flex.flex-wrap.align-items-center span.visually-hidden');
+            if (multiRoleCompany) {
+                const text = multiRoleCompany.innerText.trim();
+                if (text) {
+                    uniqueCompanies.add(text.split('\n')[0].trim());
+                }
+            }
+        });
+
+        metadata.experience.push(...uniqueCompanies);
+    } 
 
     return metadata;
 }

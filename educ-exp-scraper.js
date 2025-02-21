@@ -39,12 +39,13 @@ function scrapeEducationAndExperience() {
         }
     }
 
+    // ul element
     const experienceList = document.querySelector('.BLQQPYeZfPEOBptApvnHfGNvZksbQdSVTI');
 
     if (experienceList) {
             
-        // Try finding li elements directly
-        const liElements = experienceList.querySelectorAll('.PmHlzGkueYTEwuKHWkhZavwsBhlOXakIgZI');
+        // li elements
+        const liElements = experienceList.querySelectorAll('.artdeco-list__item') || experienceList.querySelectorAll('.PmHlzGkueYTEwuKHWkhZavwsBhlOXakIgZI') || experienceList.querySelectorAll('.mUazJzksIDPcxRCYmAPvRGYmBpjIxEQazTelQ') || experienceList.querySelectorAll('.FYMtNNzLPPSoOHrxKuxeKtmOHmAzhsPKSU');
 
         const uniqueCompanies = new Set();
 
